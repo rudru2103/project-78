@@ -1,2 +1,82 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  text-align: center;
+}
+
+/* Header */
+header {
+  background: #6200ea;
+  color: white;
+  padding: 20px 0;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Game section */
+.game-section {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin: 20px auto;
+  width: 300px;
+  height: 300px;
+}
+
+.cell {
+  background-color: white;
+  border: 2px solid #6200ea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cell.taken {
+  pointer-events: none;
+  color: #6200ea;
+}
+
+#winnerMessage {
+  margin: 20px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: green;
+}
+
+#restartButton {
+  background: #6200ea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#restartButton:hover {
+  background: #3700b3;
+}
+
+/* Footer */
+footer {
+  margin-top: 20px;
+  padding: 10px 0;
+  background: #6200ea;
+  color: white;
+}
   
   
