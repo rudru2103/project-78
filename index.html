@@ -1,26 +1,36 @@
-<html>
-    <head>
-        <title>
-            Project C78
-        </title>
-
-        <link rel="stylesheet" href="style.css" type="text/css">
-
-    </head>
-    <body>
-        <center style="margin-top: 40px;">
-            <h1>
-                My Family Book
-            </h1>
-
-            <img src="https://i.postimg.cc/MKdhy06Z/family.jpg" id="family_member_image" width="150px" height="200px">
-            <h4 id="family_member_name"></h4>
-            <button onclick="update();">Next<button>
-           <!-- Debug the above code to create a button with onclick functionality as given below-->
-            <!-- <button onclick="update();">Next</button>  -->
-          
-        </center>
-
-        <script src="main.js"></script>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Website</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to the Game Website!</h1>
+  </header>
+  <main>
+    <section class="game-section">
+      <h2>Tic-Tac-Toe</h2>
+      <div class="game-board">
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <p class="winner-message" id="winnerMessage"></p>
+      <button id="restartButton">Restart Game</button>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Game Website. All Rights Reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
 </html>
