@@ -3,25 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Website</title>
+  <title>Clicker Test</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Welcome to the Game Website!</h1>
+    <h1>Clicker Test</h1>
   </header>
   <main>
     <section class="game-section">
-      <h2>Tic-Tac-Toe</h2>
-      <div class="game-board" id="gameBoard">
-        <!-- The board cells will be created dynamically -->
-      </div>
-      <p class="winner-message" id="winnerMessage"></p>
-      <button id="restartButton">Restart Game</button>
+      <p id="instructions">Click the button as many times as you can in <span id="timeLimit">10</span> seconds!</p>
+      <button id="clickButton" disabled>Start the Game</button>
+      <p id="clickCount">Clicks: 0</p>
+      <button id="startButton">Start</button>
     </section>
   </main>
   <footer>
-    <p>&copy; 2024 Game Website. All Rights Reserved.</p>
+    <p>&copy; 2024 Clicker Test. All Rights Reserved.</p>
   </footer>
   <script src="script.js"></script>
 </body>
