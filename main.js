@@ -1,28 +1,47 @@
-const cells = document.querySelectorAll("[data-cell]");
+const gameBoard = document.getElementById("gameBoard");
 const winnerMessage = document.getElementById("winnerMessage");
 const restartButton = document.getElementById("restartButton");
 
 let currentPlayer = "X";
+let boardState = Array(9).fill(""); // To track the state of the board
 
+// Function to create the board dynamically
+function createBoard() {
+  gameBoard.innerHTML = ""; // Clear the board
+  boardState.forEach((_, index) => {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    cell.dataset.index = index;
+    cell.addEventListener("click", handleClick, { once: true });
+    gameBoard.appendChild(cell);
+  });
+}
+
+// Handle a cell click
 function handleClick(event) {
   const cell = event.target;
+  const index = cell.dataset.index;
+
+  boardState[index] = currentPlayer;
   cell.textContent = currentPlayer;
   cell.classList.add("taken");
 
   if (checkWin(currentPlayer)) {
-    winnerMessage.textContent = `${currentPlayer} Wins!`;
+    winnerMessage.textContent = `${currentPlayer} Wins! 🎉`;
     disableBoard();
     return;
   }
 
   if (isDraw()) {
-    winnerMessage.textContent = "It's a Draw!";
+    winnerMessage.textContent = "It's a Draw! 🤝";
     return;
   }
 
+  // Switch the current player
   currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
 
+// Check if the current player has won
 function checkWin(player) {
   const winPatterns = [
     [0, 1, 2],
@@ -36,28 +55,29 @@ function checkWin(player) {
   ];
 
   return winPatterns.some(pattern =>
-    pattern.every(index => cells[index].textContent === player)
+    pattern.every(index => boardState[index] === player)
   );
 }
 
+// Check if the game is a draw
 function isDraw() {
-  return [...cells].every(cell => cell.textContent);
+  return boardState.every(cell => cell);
 }
 
+// Disable all cells
 function disableBoard() {
+  const cells = document.querySelectorAll(".cell");
   cells.forEach(cell => cell.removeEventListener("click", handleClick));
 }
 
+// Restart the game
 function restartGame() {
   currentPlayer = "X";
-  cells.forEach(cell => {
-    cell.textContent = "";
-    cell.classList.remove("taken");
-    cell.addEventListener("click", handleClick, { once: true });
-  });
+  boardState.fill(""); // Reset the board state
   winnerMessage.textContent = "";
+  createBoard();
 }
 
-// Initialize game
-cells.forEach(cell => cell.addEventListener("click", handleClick, { once: true }));
+// Initialize the game
+createBoard();
 restartButton.addEventListener("click", restartGame);
