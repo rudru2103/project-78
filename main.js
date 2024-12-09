@@ -1,20 +1,63 @@
-var images = ["https://i.postimg.cc/MGn9GJXw/family.jpg" , "https://i.postimg.cc/wjMnFtMX/father.jpg" , "https://i.postimg.cc/5ymDKL83/bro.jpg", "https://i.postimg.cc/JnL6wtrd/sister.jpg", "https://i.postimg.cc/bw5W5zSK/mother.jpg"];
-var names = ["Family Book","Siddarth Khaturia", "Rudra Khaturia", "Alia Khaturia", "Kavya Khaturia"];
-var i = 0;
-function update()
-{
-    i++;
-    var numbers_of_family_member_in_array = 4
-    if(i > numbers_of_family_member_in_array)
-      {
-          i = 0;
-      }
-    
-    //Debug the code to store list of images in updatedImage. Use images[i]
-    var updatedImage = images[i];
-    //Debug the code to store list of names in updatedName. Use names[i]
-    var updatedName = names[i] ;
- 
-    document.getElementById("family_member_image").src = updatedImage;
-    document.getElementById("family_member_name").innerHTML = updatedName;
+const cells = document.querySelectorAll("[data-cell]");
+const winnerMessage = document.getElementById("winnerMessage");
+const restartButton = document.getElementById("restartButton");
+
+let currentPlayer = "X";
+
+function handleClick(event) {
+  const cell = event.target;
+  cell.textContent = currentPlayer;
+  cell.classList.add("taken");
+
+  if (checkWin(currentPlayer)) {
+    winnerMessage.textContent = `${currentPlayer} Wins!`;
+    disableBoard();
+    return;
+  }
+
+  if (isDraw()) {
+    winnerMessage.textContent = "It's a Draw!";
+    return;
+  }
+
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
+
+function checkWin(player) {
+  const winPatterns = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  return winPatterns.some(pattern =>
+    pattern.every(index => cells[index].textContent === player)
+  );
+}
+
+function isDraw() {
+  return [...cells].every(cell => cell.textContent);
+}
+
+function disableBoard() {
+  cells.forEach(cell => cell.removeEventListener("click", handleClick));
+}
+
+function restartGame() {
+  currentPlayer = "X";
+  cells.forEach(cell => {
+    cell.textContent = "";
+    cell.classList.remove("taken");
+    cell.addEventListener("click", handleClick, { once: true });
+  });
+  winnerMessage.textContent = "";
+}
+
+// Initialize game
+cells.forEach(cell => cell.addEventListener("click", handleClick, { once: true }));
+restartButton.addEventListener("click", restartGame);
