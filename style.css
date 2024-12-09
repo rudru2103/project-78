@@ -1,16 +1,14 @@
-/* General styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
-  color: #333;
   text-align: center;
+  background-color: #f0f8ff;
+  color: #333;
 }
 
-/* Header */
 header {
-  background: #6200ea;
+  background-color: #6200ea;
   color: white;
   padding: 20px 0;
 }
@@ -19,64 +17,39 @@ header h1 {
   margin: 0;
 }
 
-/* Game section */
 .game-section {
   margin: 20px auto;
-  width: 90%;
+  padding: 20px;
   max-width: 600px;
-}
-
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
-  margin: 20px auto;
-  width: 300px;
-  height: 300px;
-}
-
-.cell {
   background-color: white;
-  border: 2px solid #6200ea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
-.cell.taken {
-  pointer-events: none;
-  color: #6200ea;
-}
-
-#winnerMessage {
-  margin: 20px 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: green;
-}
-
-#restartButton {
-  background: #6200ea;
-  color: white;
-  border: none;
+button {
+  font-size: 1.2rem;
   padding: 10px 20px;
-  font-size: 1rem;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-#restartButton:hover {
-  background: #3700b3;
-}
-
-/* Footer */
-footer {
-  margin-top: 20px;
-  padding: 10px 0;
-  background: #6200ea;
+#clickButton {
+  background-color: #4caf50;
   color: white;
 }
-  
-  
+
+#clickButton:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+#startButton {
+  background-color: #6200ea;
+  color: white;
+}
+
+#startButton:hover {
+  background-color: #3700b3;
+}
